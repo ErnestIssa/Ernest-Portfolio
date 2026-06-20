@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Ernest Itengishaka — Software Engineer | IT Support & Technician</title>
+<title>Ernest Itengishaka — Software Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
@@ -31,7 +31,7 @@
   --shadow2:  0 20px 60px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
 }
 *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
-html { font-size:16px; }
+html { font-size:16px; scroll-behavior:smooth; }
 body {
   background: var(--bg);
   color: var(--ink);
@@ -39,6 +39,7 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   cursor: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* ── BACKGROUND MESH ── */
@@ -734,6 +735,23 @@ footer {
   .skills-wrap { grid-template-columns:1fr; }
   .exp-head { flex-direction:column; }
   .exp-right { align-items:flex-start; }
+  .card-profile-img {
+    width: clamp(58px, 15vw, 72px);
+    height: clamp(58px, 15vw, 72px);
+    top: 12px;
+    right: 12px;
+  }
+  .card-mid {
+    padding-right: clamp(68px, 18vw, 84px);
+    max-width: 100%;
+  }
+  .card-since {
+    font-size: clamp(6px, 1.8vw, 8px);
+    letter-spacing: .1em;
+    line-height: 1.5;
+    word-break: break-word;
+  }
+  .card-name { font-size: clamp(18px, 5vw, 26px); }
 }
 @media(max-width:480px){
   .skills-wrap { grid-template-columns:1fr; }
@@ -773,7 +791,7 @@ footer {
 
         <!-- MID: name + title -->
         <div class="card-mid">
-          <span class="card-since">Software Engineer | IT Support & Technician</span>
+          <span class="card-since">Software Engineer</span>
           <div class="card-name">
             Ernest
             <em>Itengishaka</em>
@@ -825,7 +843,7 @@ footer {
   <section id="about" class="glass-section">
     <div class="about-inner">
       <p class="about-text reveal">
-        Junior Software Engineer with hands-on experience across frontend, backend, and IT support — building and maintaining real-world 
+        Software Engineer with hands-on experience across frontend, backend, and IT support — building and maintaining real-world 
         digital solutions through company work and freelance projects, with a practical ability to troubleshoot systems, support users, 
         and develop scalable applications from the ground up.
       </p>
@@ -1100,26 +1118,13 @@ footer {
         <div class="proj-num">03 <span class="proj-live">Live</span></div>
         <h3 class="proj-name">Peak <em>Mode</em></h3>
         <div class="proj-sub">Fullstack E-Commerce Platform · Bålsta</div>
-        <p class="proj-desc">A fullstack e-commerce platform for Peak Mode's customer-facing store — React and Vite on the frontend, Node.js, Express, and MongoDB on the backend. Integrated Stripe payments and Cloudinary media handling, deployed on Render with a clear architecture built for scalability and long-term maintainability.</p>
+        <p class="proj-desc">A fullstack athletic wear platform — customer storefront and internal admin dashboard in one product suite. React and Vite on the frontend, Node.js, Express, and MongoDB on the backend, with Stripe payments, Cloudinary media, and Render deployment.</p>
         <div class="proj-tags">
-          <span class="exp-tag">React.js</span><span class="exp-tag">Vite</span><span class="exp-tag">Node.js</span>
-          <span class="exp-tag">Express.js</span><span class="exp-tag">MongoDB</span><span class="exp-tag">Stripe</span>
+          <span class="exp-tag">React.js</span><span class="exp-tag">Vite</span><span class="exp-tag">TypeScript</span>
+          <span class="exp-tag">Node.js</span><span class="exp-tag">MongoDB</span><span class="exp-tag">Stripe</span>
           <span class="exp-tag">Cloudinary</span><span class="exp-tag">Render</span>
         </div>
         <a href="https://peakmode.se/" target="_blank" class="proj-link">View project <span class="proj-link-arrow">→</span></a>
-      </div>
-
-      <div class="proj-card reveal" style="transition-delay:.30s">
-        <div class="proj-num">04 <span class="proj-live">Live</span></div>
-        <h3 class="proj-name">Peak Mode <em>Admin</em></h3>
-        <div class="proj-sub">E-Commerce Operations Dashboard · Bålsta</div>
-        <p class="proj-desc">A large-scale admin SPA covering day-to-day operations — orders, products, customers, shipping, discounts, reviews, campaigns, and hub content. Typed Axios services and role-aware auth keep the UI thin, while React Hook Form, Zod, Recharts, and Tailwind power validated forms, data-heavy dashboards, and consistent UX across a TypeScript codebase.</p>
-        <div class="proj-tags">
-          <span class="exp-tag">React.js</span><span class="exp-tag">TypeScript</span><span class="exp-tag">Tailwind CSS</span>
-          <span class="exp-tag">Axios</span><span class="exp-tag">Zod</span><span class="exp-tag">Recharts</span>
-          <span class="exp-tag">React Hook Form</span><span class="exp-tag">Render</span>
-        </div>
-        <a href="https://peakmode-admin.onrender.com" target="_blank" class="proj-link">View project <span class="proj-link-arrow">→</span></a>
       </div>
 
     </div>
@@ -1327,7 +1332,7 @@ card.addEventListener('touchend',()=>{ card.style.transform=''; });
     touchDeltaAccum = dy;
     if(dy > THRESHOLD){
       snapped = true;
-      main.scrollIntoView({behavior:'smooth'});
+      window.scrollTo({ top: main.offsetTop, behavior: 'smooth' });
     }
   },{passive:true});
 
@@ -1336,7 +1341,7 @@ card.addEventListener('touchend',()=>{ card.style.transform=''; });
     if(snapped) return;
     if(e.deltaY > 40){
       snapped = true;
-      main.scrollIntoView({behavior:'smooth'});
+      window.scrollTo({ top: main.offsetTop, behavior: 'smooth' });
     }
     e.preventDefault();
   },{passive:false});
@@ -1350,7 +1355,7 @@ card.addEventListener('touchend',()=>{ card.style.transform=''; });
   // Arrow button
   document.getElementById('scrollArrow').addEventListener('click',()=>{
     snapped = true;
-    main.scrollIntoView({behavior:'smooth'});
+    window.scrollTo({ top: main.offsetTop, behavior: 'smooth' });
   });
 })();
 
